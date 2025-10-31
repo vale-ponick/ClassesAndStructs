@@ -50,7 +50,6 @@ let postWhat = Post(title: "What the Dead Man said",
     
 postWhat.add(comment: "So good novel!")
 postWhat.add(comment: "Waiting to the continuation")
-postAll.add(quote: "- end ")
 
 print("Author \(postAll.author) has published first post \(postAll.title) with text \(postAll.context)")
     print(postWhat === postAll ? "Один объект" : "Разные объекты") // создали 'Разные объекты'
@@ -152,3 +151,105 @@ fido.describe()
  Базовые методы    Логические методы с условиями    ✅
  Простой вывод    Интерактивный вывод с эмодзи    ✅
  Статическое поведение    Динамическое поведение    ✅  */
+
+print("Задача: Система учета книг в библиотеке: Создай класс Book с свойствами: название, автор, доступность (true/false). Реализуй методы: взять книгу, вернуть книгу. Создай массив книг и выведи их список.")
+
+class Book {
+    let title: String
+    let author: String
+    let category: String
+    var isAvailable: Bool = true
+    
+    init(title: String, author: String, category: String) {
+        self.title = title
+        self.author = author
+        self.category = category
+        self.isAvailable = true
+    }
+
+func takeBook() {
+    if isAvailable {
+        isAvailable = false
+        print("the book '\(title)' was taken from the library.")
+    } else {
+        print("the book '\(title)' was taken by someone else.")
+    }
+}
+
+func returnBook() {
+    if !isAvailable {
+        isAvailable = true
+        print("the book '\(title)' was returned to the library.")
+            } else {
+                print("Книга '\(title)' aleady available in the library.")
+            }
+        }
+    
+func displayInfo() {
+        let status = isAvailable ? "доступна" : "взята"
+        print("'\(title)' - \(author) (\(category)) - \(status)")
+    }
+}
+
+var books: [Book] = []
+
+func add(book: Book) {
+    books.append(book)
+}
+
+func displayAllBooks() {
+    print("\n=== КАТАЛОГ БИБЛИОТЕКИ ===")
+    for book in books {
+        book.displayInfo()
+    }
+    print("========================\n")
+}
+
+let hobbit = Book(title: "Hobbit", author: "J.R.R.Tolkien", category: "fantasy")
+let shining = Book(title: "Shining", author: "Stephen King", category: "horror")
+let harryPotter = Book(title: "Harry Potter and the Philosopher's Stone", author: "J.K. Rowling", category: "fantasy")
+
+add(book: hobbit)
+add(book: shining)
+add(book: harryPotter)
+
+displayAllBooks()
+
+hobbit.takeBook()
+shining.takeBook()
+hobbit.takeBook()
+
+displayAllBooks()
+
+hobbit.returnBook()
+shining.returnBook()
+
+// Финальный статус
+displayAllBooks()
+
+/* Задача: Система учета книг в библиотеке: Создай класс Book с свойствами: название, автор, доступность (true/false). Реализуй методы: взять книгу, вернуть книгу. Создай массив книг и выведи их список.
+ 
+ === КАТАЛОГ БИБЛИОТЕКИ ===
+ 'Hobbit' - J.R.R.Tolkien (fantasy) - доступна <- после возврата станет снова "доступна"
+ 'Shining' - Stephen King (horror) - доступна
+ 'Harry Potter and the Philosopher's Stone' - J.K. Rowling (fantasy) - доступна
+ ========================
+
+ the book 'Hobbit' was taken from the library.
+ the book 'Shining' was taken from the library.
+ the book 'Hobbit' was taken by someone else.
+
+ === КАТАЛОГ БИБЛИОТЕКИ ===
+ 'Hobbit' - J.R.R.Tolkien (fantasy) - взята
+ 'Shining' - Stephen King (horror) - взята
+ 'Harry Potter and the Philosopher's Stone' - J.K. Rowling (fantasy) - доступна
+ ========================
+
+ the book 'Hobbit' was returned to the library.
+ the book 'Shining' was returned to the library.
+
+ === КАТАЛОГ БИБЛИОТЕКИ ===
+ 'Hobbit' - J.R.R.Tolkien (fantasy) - доступна
+ 'Shining' - Stephen King (horror) - доступна
+ 'Harry Potter and the Philosopher's Stone' - J.K. Rowling (fantasy) - доступна
+ ======================== */
