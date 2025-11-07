@@ -156,11 +156,11 @@ print("Задача: Система учета книг в библиотеке:
 
 enum BookCategory: String, CaseIterable {
     case fantasy = "fantasy"
-case horror = "horror"
- case romance = "romance"
- case mystery = "mystery"
- case scienceFiction = "scienceFiction"
- case biography = "biography"
+    case horror = "horror"
+    case romance = "romance"
+    case mystery = "mystery"
+    case scienceFiction = "scienceFiction"
+    case biography = "biography"
 }
 
 class Book {
@@ -305,8 +305,154 @@ orange.color = "orange"
 orange.taste = "sweet"
 
 
-print(orange.description)
-print("Volume from getter: \(String(format: "%.2f", orange.orangeVolume))")
-print("Volume from method: \(String(format: "%.2f", orange.calcOrangeVolume()))")
+print(orange.description) // Orange has orange color and sweet taste. The volume of orange is 7238.23.
+print("Volume from getter: \(String(format: "%.2f", orange.orangeVolume))") // Volume from getter: 7238.23
+print("Volume from method: \(String(format: "%.2f", orange.calcOrangeVolume()))") // Volume from method: 7238.23
+
+/* Задача от ИИ: класс Basket (корзина с фруктами)
+
+ - Создай класс Basket (Корзина)
+ - Свойства: fruits: [Orange] (массив апельсинов), maxWeight: Double
+ - Методы:
+   1. addOrange(_ orange: Orange) -> Bool
+      (добавляет апельсин если не превышен maxWeight)
+   2. totalWeight() -> Double
+      (возвращает общий вес всех апельсинов в корзине)
+   3. findHeaviest() -> Orange?
+      (возвращает самый тяжелый апельсин)
+ - Предположим: вес апельсина = его объем * 0.8 (плотность) */
+
+struct Apple {
+    let name: String // храним свойства яблока
+    let radius: Double
+    let density: Double
+    
+    var weightApple: Double { // вычисляемое свойство
+        return (4.0/3.0) * Double.pi * pow(radius, 3) * density // вычислили ВЕС яблока
+    }
+}
+    
+    class Basket {
+        var fruits: [Apple] = [] // массив яблок
+        let maxWeight: Double    // max вес яблока
+        
+        init(fruits: [Apple] = [], maxWeight: Double) { // Добавь значение по умолчанию для fruits
+            self.fruits = fruits
+            self.maxWeight = maxWeight
+        }
+        
+        func addApple(_ apple: Apple) -> Bool { // метод класса 'добавь яблоко'
+            let newTotalWeight = calcTotalWeight() + apple.weightApple
+                if newTotalWeight <= maxWeight {
+                    fruits.append(apple)
+                    return true
+                } else {
+                    return false
+                }
+            }
+        
+        func calcTotalWeight() -> Double { // метод класса 'рассчитай общий вес'
+            return fruits.reduce(0) { $0 + $1.weightApple }
+        }
+        
+        func findHeaviest() -> Apple? { // метод класса 'найди самое тяжелое яблоко'
+            return fruits.max(by: { $0.weightApple < $1.weightApple })
+        }
+    }
+
+// tests
+print("___'The Basket of fruits'___\n")
+let greenApple = Apple(name: "Green Apple", radius: 5.0, density: 0.8)
+let redApple = Apple(name: "Red Apple", radius: 6.0, density: 0.9)
+let giantApple = Apple(name: "Giant Apple", radius: 10.0, density: 0.85)
+    
+print("Apple weights:")
+print(" - \(greenApple.name): \(String(format: "%.2f", greenApple.weightApple))")
+print(" - \(redApple.name): \(String(format: "%.2f", redApple.weightApple))")
+print(" - \(giantApple.name): \(String(format: "%.2f", giantApple.weightApple))")
 
 
+let basket = Basket(maxWeight: 2000.0)
+
+print("Adding apples:")
+print(" - \(greenApple.name): \(basket.addApple(greenApple) ? "Success" : "Failed")")
+print(" - \(redApple.name): \(basket.addApple(redApple) ? "Success" : "Failed")")
+print(" - \(giantApple.name): \(basket.addApple(giantApple) ? "Success" : "Failed")")
+print()
+
+print("Total weight: \(String(format: "%.2f", basket.calcTotalWeight()))")
+
+if let heaviest = basket.findHeaviest() {
+    print("Heaviest apple: \(heaviest.name) (\(String(format: "%.2f", heaviest.weightApple)))")
+} else {
+    print("Basket is empty")
+}
+/* ___'The Basket of fruits'___
+ 
+ Apple weights:
+  - Green Apple: 418.88
+  - Red Apple: 814.30
+  - Giant Apple: 3560.47
+ Adding apples:
+  - Green Apple: Success
+  - Red Apple: Success
+  - Giant Apple: Failed
+
+ Total weight: 1233.18
+ Heaviest apple: Red Apple (814.30) */
+
+print("Задача: 'Система заказа в кофейне'")
+/* Создай структуру Coffee (Кофе):
+- Свойства: name, price, size (маленький/средний/большой)
+
+Создай класс Order (Заказ):
+- Свойства: items: [Coffee], orderTime, totalPrice
+- Методы:
+  1. addCoffee(_ coffee: Coffee) - добавляет кофе в заказ
+  2. removeCoffee(at index: Int) - удаляет кофе по индексу
+  3. calculateTotal() -> Double - вычисляет общую стоимость
+  4. applyDiscount(_ percent: Double) -> Double - применяет скидку в %
+
+Особенности:
+- Каждый кофе имеет базовую цену в зависимости от размера:
+  маленький: цена * 1.0, средний: цена * 1.3, большой: цена * 1.6
+- Скидка не может быть больше 50% */
+
+enum Size: Double {
+    case small = 1.0
+    case medium = 1.3
+    case big = 1.6
+}
+
+enum CoffeeName: String { // или уместнее struct? храним и все ...
+    case espresso = "Espresso"
+    case americano = "Americano"
+    case latte = "Latte"
+    
+}
+
+struct Coffee {
+    let name: String
+    let basePrice: Double
+    var size: Size
+    
+    var finalPrice: Double {
+        return basePrice * size.rawValue // ✅ правильная логика!
+    }
+}
+
+class Order {
+    var orders: [Coffee]
+    var orderTimes: Double
+    var totalPrice: Double
+    
+    init(orders: [Coffee] = [], orderTimes: Double, totalPrice: Double) {
+        self.orders = orders
+        self.orderTimes = orderTimes
+        self.totalPrice = totalPrice
+    }
+    
+    func addCoffee(_ coffee: Coffee) { // добавим кофе в заказ
+        orders.append(coffee)
+    }
+}
