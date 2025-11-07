@@ -410,8 +410,7 @@ print("Задача: 'Система заказа в кофейне'")
 - Методы:
   1. addCoffee(_ coffee: Coffee) - добавляет кофе в заказ
   2. removeCoffee(at index: Int) - удаляет кофе по индексу
-  3. calculateTotal() -> Double - вычисляет общую стоимость
-  4. applyDiscount(_ percent: Double) -> Double - применяет скидку в %
+  3. applyDiscount(_ percent: Double) -> Double - применяет скидку в %
 
 Особенности:
 - Каждый кофе имеет базовую цену в зависимости от размера:
@@ -436,23 +435,54 @@ struct Coffee {
     let basePrice: Double
     var size: Size
     
-    var finalPrice: Double {
+    var finalPrice: Double { // вычисляемое свойство
         return basePrice * size.rawValue // ✅ правильная логика!
     }
 }
 
 class Order {
     var orders: [Coffee]
-    var orderTimes: Double
-    var totalPrice: Double
+    var orderTimes: Date
     
-    init(orders: [Coffee] = [], orderTimes: Double, totalPrice: Double) {
+    var totalPrice: Double { // вычисляет общую стоимость
+        return orders.reduce(0) {$0 + $1.finalPrice }
+    }
+    
+    
+    init(orders: [Coffee] = [], orderTimes: Date = Date()) {
         self.orders = orders
         self.orderTimes = orderTimes
-        self.totalPrice = totalPrice
     }
     
     func addCoffee(_ coffee: Coffee) { // добавим кофе в заказ
         orders.append(coffee)
     }
+    
+    func removeCoffee(at index: Int) { // удаляет кофе по индексу
+        orders.remove(at: index)
+    }
+    
+    func applyDiscount(_ percent: Double) -> Double { // применяет скидку не > 50 %
+        let maxDiscount = 50.0
+        let actualDiscount = min(percent, maxDiscount)
+        
+        let discountPrice = totalPrice * (1 - actualDiscount / 100)
+        return discountPrice
+    }
 }
+
+print("\n-- Тест системы заказа ☕️ --")
+
+let espresso = Coffee(name: "Espresso", basePrice: 100, size: .small)
+let latte = Coffee(name: "Latte", basePrice: 150, size: .big)
+
+let order = Order()
+order.addCoffee(espresso)
+order.addCoffee(latte)
+
+print("Общая стоимость: 💰 \(order.totalPrice)")
+print("Со скидкой 20%: 🔥  \(order.applyDiscount(20))")
+
+/* -- Тест системы заказа ☕️ --
+ Общая стоимость: 💰 340.0
+ Со скидкой 20%: 🔥  272.0 */
