@@ -22,9 +22,27 @@
 		5884CD532EB32C5E00A4DC46 /* ClassesAndStructs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ClassesAndStructs; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5804C5CB2EC2F19800C9DAC9 /* Exceptions for "ClassesAndStructs" folder in "ClassesAndStructs" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				basketWithFruits/projectBasketWithFruits.swift,
+				classWithEnumDog/projectClassWithEnumDog.swift,
+				coffeeShopOrderedSystem/projectCoffeeShopOrder.swift,
+				homeWorkFromEfimov/classesAndInstances.swift,
+				lessonWithAlexEfimov/lessonFromEfimovCourse.swift,
+				librayBookAccountingSystem/projectLibraryBookAccountingSystem.swift,
+			);
+			target = 5884CD522EB32C5E00A4DC46 /* ClassesAndStructs */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5884CD552EB32C5E00A4DC46 /* ClassesAndStructs */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5804C5CB2EC2F19800C9DAC9 /* Exceptions for "ClassesAndStructs" folder in "ClassesAndStructs" target */,
+			);
 			path = ClassesAndStructs;
 			sourceTree = "<group>";
 		};
