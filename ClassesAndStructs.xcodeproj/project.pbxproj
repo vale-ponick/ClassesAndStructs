@@ -30,6 +30,7 @@
 				classWithEnumDog/projectClassWithEnumDog.swift,
 				coffeeShopOrderedSystem/projectCoffeeShopOrder.swift,
 				homeWorkFromEfimov/classesAndInstances.swift,
+				homeWorkStructsFromEfimov/homeWorkStructsFromAlexEfimov.swift,
 				lessonWithAlexEfimov/lessonFromEfimovCourse.swift,
 				librayBookAccountingSystem/projectLibraryBookAccountingSystem.swift,
 			);

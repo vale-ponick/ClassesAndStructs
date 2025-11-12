@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Задача от А.Ефимова по теме 'Классы и экземпляры классов'
+// Home Work 8 от А.Ефимова по теме 8: 'Классы и экземпляры классов'
 
 class Orange {
     var color: String = ""
@@ -47,3 +47,5 @@ orange.taste = "sweet"
 print(orange.description) // Orange has orange color and sweet taste. The volume of orange is 7238.23.
 print("Volume from getter: \(String(format: "%.2f", orange.orangeVolume))") // Volume from getter: 7238.23
 print("Volume from method: \(String(format: "%.2f", orange.calcOrangeVolume()))") // Volume from method: 7238.23
+
+//
