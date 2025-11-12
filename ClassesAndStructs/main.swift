@@ -98,3 +98,25 @@ print(ellipse)
  
  NB: если в классе есть свойства - init() обязателен
      НО если есть ТОЛЬКО computed property - то НЕТ! */
+
+
+// Задача: создай struct Car with properties model + power + description + method increasePower. Create instance and output to console.
+
+struct Car {
+    let model: String
+    var power: Int
+    
+    var description: String {
+        return "\(model) \(power) hp."
+    }
+    
+    mutating func increasePower(by amount: Int) {
+        self.power += amount
+    }
+}
+
+var toyota = Car(model: "Toyota Rav4", power: 182)
+    print(toyota.description) // Toyota Rav4 182 hp.
+
+toyota.increasePower(by: 45)
+print(toyota.description) // Toyota Rav4 227 hp.
