@@ -29,4 +29,8 @@ print("Задача: создай enum DistanceUnit with case versta, km, mile +
 
 print("Задача: создай enum DistanceUnit with case versta, km, mile withouth .map()")
 
+print("Задача: создай enum DistanceUnit with case versta, km, mile + extension + .map() + rawValue + formatted()")
+
+
+
 

@@ -7,9 +7,9 @@
 
 import Foundation
 
-print("Задача: создай enum DistanceUnit with case versta, km, mile withouth .map()")
+print("Задача: создай enum IntervalUnit with case versta, km, mile withouth .map()")
 
-enum DistanceUnit {
+enum IntervalUnit {
     enum NonISUCountry: String {
         case usa = "USA" // исходные значение присвоены
         case liberia = "Liberia"
@@ -21,26 +21,26 @@ enum DistanceUnit {
     case mile(title: String, denotation: String, countries: [NonISUCountry])
 }
 
-let versta: DistanceUnit = .versta(
+let versta: IntervalUnit = .versta(
     title: "Versta",
     denotation: "versta",
     countries: ["Moscow Principality", "Russia Impire"]
 )
     
-let kilometer: DistanceUnit = .kilometer(
+let kilometer: IntervalUnit = .kilometer(
     title: "Kilometer",
     denotation: "km",
     countries: ["Russia", "France", "Italy"]
 )
 
-let mile: DistanceUnit = .mile(
+let mile: IntervalUnit = .mile(
     title: "Mile",
     denotation: "ml",
     countries: [.liberia, .myanmar, .usa]
 )
 
-func getInfoAbout(_ distanceUnit: DistanceUnit) {
-    switch distanceUnit {
+func getInfoAbout(_ intervalUnit: IntervalUnit) {
+    switch intervalUnit {
     case let .versta(title, denotation, countries),
          let .kilometer(title, denotation, countries):
         print("\(title). Short title \(denotation). Countries: \(countries.formatted())")

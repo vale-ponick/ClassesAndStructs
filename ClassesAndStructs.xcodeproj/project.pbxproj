@@ -33,6 +33,7 @@
 				homeWorkStructsFromEfimov/homeWorkStructsFromAlexEfimov.swift,
 				homeWorkStructsFromEfimov/nesstedEnumsWithoutMethodMap.swift,
 				homeWorkStructsFromEfimov/nestedEnumsFromAlexEfimov.swift,
+				homeWorkStructsFromEfimov/nestedEnumsWithExtensoin.swift,
 				homeWorkStructsFromEfimov/projectNestedEnums.swift,
 				lessonWithAlexEfimov/lessonFromEfimovCourse.swift,
 				librayBookAccountingSystem/projectLibraryBookAccountingSystem.swift,
