@@ -31,6 +31,8 @@
 				coffeeShopOrderedSystem/projectCoffeeShopOrder.swift,
 				homeWorkFromEfimov/classesAndInstances.swift,
 				homeWorkStructsFromEfimov/homeWorkStructsFromAlexEfimov.swift,
+				homeWorkStructsFromEfimov/nesstedEnumsWithoutMethodMap.swift,
+				homeWorkStructsFromEfimov/nestedEnumsFromAlexEfimov.swift,
 				homeWorkStructsFromEfimov/projectNestedEnums.swift,
 				lessonWithAlexEfimov/lessonFromEfimovCourse.swift,
 				librayBookAccountingSystem/projectLibraryBookAccountingSystem.swift,
