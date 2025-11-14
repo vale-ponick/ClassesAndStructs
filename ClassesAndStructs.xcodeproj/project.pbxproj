@@ -31,6 +31,7 @@
 				coffeeShopOrderedSystem/projectCoffeeShopOrder.swift,
 				homeWorkFromEfimov/classesAndInstances.swift,
 				homeWorkStructsFromEfimov/homeWorkStructsFromAlexEfimov.swift,
+				homeWorkStructsFromEfimov/projectNestedEnums.swift,
 				lessonWithAlexEfimov/lessonFromEfimovCourse.swift,
 				librayBookAccountingSystem/projectLibraryBookAccountingSystem.swift,
 			);
